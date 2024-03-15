@@ -2,13 +2,13 @@
 # Pure2ROR2Pure: Pure & ROR Integration Scripts
 
 ## Overview
-This repository contains a collection of Python scripts designed to facilitate the integration of Research Organization Registry (ROR) IDs with a Pure instance. These scripts are useful for extracting data from a Pure instance, querying the ROR API for matching organizations, and updating the external organizations in Pure instance with ROR IDs.
+This repository contains a collection of Python scripts designed to facilitate the integration of Research Organization Registry (ROR) IDs with a Pure instance. These scripts are useful for extracting data from a Pure instance, querying the ROR API for matching organizations, and updating the external organizations in Pure with ROR IDs.
 
 ## Scripts
 
-- **getror-rorapi.py**: Queries the ROR API with external organization names from a Pure instance to find matching ROR IDs.
+- **getror-rorapi.py**: Queries the ROR API with external organization names from a Pure instance to find potential matching ROR IDs.
 - **getror-docker.py**: Similar to `getror-rorapi.py` but designed to work with a local ROR API instance, run via Docker. [Info here](https://github.com/ror-community/ror-api) 
-- **csv-to-ror_docker.py**: Reads a CSV file containing organization names and UUIDs, queries a local ROR API instance for matches, and generates an output CSV with ROR IDs.
+- **csv-to-ror_docker.py**: Reads a CSV file containing organization names and UUIDs, queries a local ROR API Docker instance for matches, and generates an output CSV with ROR IDs.
 - **writeror2pure.py**: Takes the output CSV from the ROR querying scripts and updates the Pure instance with ROR IDs.
 
 ## Requirements
@@ -18,6 +18,11 @@ This repository contains a collection of Python scripts designed to facilitate t
 - CSV and OS standard libraries (included with Python)
 - API key for Pure with read/write rights to the /external-organizations/* endpoint
 - Docker (if relevant)
+
+## Recommendations 
+
+- Run in a staging/test envriroment before moving to production!
+- Check the results in the csv file, and filter out wrong IDs before writing data back to Pure
 
 ## Setup
 
@@ -37,7 +42,7 @@ To query the ROR API for organization matches, run:
 python getror-rorapi.py
 ```
 
-Or, if you're using a local ROR API instance:
+Or, if you're using a local ROR API Docker instance:
 
 ```bash
 python getror-docker.py
