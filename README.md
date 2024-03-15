@@ -37,7 +37,7 @@ To query the ROR API for organization matches, run:
 python getror-rorapi.py
 ```
 
-Or, if you're using a local ROR API instance:
+Or, if you're using a local ROR API Docker instance:
 
 ```bash
 python getror-docker.py
