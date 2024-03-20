@@ -62,6 +62,14 @@ To update your Pure instance with ROR IDs from a generated CSV file:
 python writeror2pure.py
 ```
 
+### Merging external organizations in Pure based on ROR ID and workflow status
+
+To merge external organizations in Pure based on a CSV file containing Pure UUID, Workflow step and ROR ID.:
+
+```bash
+python merge_ex_orgs_by_rorid.py
+```
+
 ## Contributing
 
 Contributions to this repository are welcome. Please fork the repository and submit a pull request with your changes.
