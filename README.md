@@ -10,6 +10,7 @@ This repository contains a collection of Python scripts designed to facilitate t
 - **getror-docker.py**: Similar to `getror-rorapi.py` but designed to work with a local ROR API instance, run via Docker. [Info here](https://github.com/ror-community/ror-api) 
 - **csv-to-ror_docker.py**: Reads a CSV file containing organization names and UUIDs, queries a local ROR API Docker instance for matches, and generates an output CSV with ROR IDs.
 - **writeror2pure.py**: Takes the output CSV from the ROR querying scripts and updates the Pure instance with ROR IDs.
+- **merge_ex_orgs_by_rorid.py**: Merge external organizations in Pure based on a CSV file containing Pure UUID, Workflow step and ROR ID
 
 ## Requirements
 
