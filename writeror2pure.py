@@ -8,7 +8,7 @@ logging.basicConfig(filename='pure_updates.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Prompt for API key and API base URL
-API_KEY = input("Enter your Pure API key: ")
+API_KEY = input("Enter your API key: ")
 BASE_URL_INPUT = input("Enter the Pure API base (e.g., my.pureinstance.com): ")
 API_URL_BASE = f"https://{BASE_URL_INPUT}/ws/api/external-organizations/"
 
@@ -20,7 +20,7 @@ def get_headers():
         "api-key": API_KEY,
     }
 
-# Fetch external organization data using UUID
+# Fetch organization data using UUID
 def fetch_organization(uuid):
     try:
         url = f"{API_URL_BASE}{uuid}"
@@ -41,16 +41,15 @@ def fetch_organization(uuid):
 # Update organization's identifiers with version control
 def update_organization(uuid, identifiers, ror_id, version):
     try:
-        # Check if ROR ID already exists
+        # Check if a ROR ID already exists (regardless of value)
         ror_exists = any(
-            identifier.get('id') == ror_id and \
-            identifier.get('type', {}).get('term', {}).get('en_GB') == "ROR ID"
+            identifier.get('type', {}).get('uri') == "/dk/atira/pure/ueoexternalorganisation/ueoexternalorganisationsources/ror"
             for identifier in identifiers
         )
 
         if ror_exists:
-            print(f"ROR ID already exists for UUID: {uuid}. Skipping update.")
-            logging.info(f"ROR ID already exists for UUID: {uuid}. Skipping update.")
+            print(f"A ROR ID already exists for UUID: {uuid}. Skipping update.")
+            logging.info(f"A ROR ID already exists for UUID: {uuid}. Skipping update.")
             return
 
         url = f"{API_URL_BASE}{uuid}"
